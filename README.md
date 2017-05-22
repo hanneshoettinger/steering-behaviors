@@ -1,6 +1,8 @@
 # steering-behaviors
 Different steering behaviors visualized using SFML 2.3.2 (https://www.sfml-dev.org).
 
+https://youtu.be/tMSIb2CJU4U
+
 ## Game
 
 ![game-ui](steering.png)
