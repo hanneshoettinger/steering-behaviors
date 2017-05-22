@@ -27,11 +27,14 @@ LMB      | set target to mouse position (star destroyer)
 ### Input
 
 Steering Behaviors:
+
 1. Ray Casting with Center Ray + Whiskers
 2. relevant vectors visible
 3. Trajectory of objects visible
 4. draw each entity (target, obstacle, etc.) 
+
 Group Behaviors:
+
 1. 4 NPCs in Wedge Formation
 2. Formation follows anker point with a fixed path
 3. Priority Blending + Moderation
