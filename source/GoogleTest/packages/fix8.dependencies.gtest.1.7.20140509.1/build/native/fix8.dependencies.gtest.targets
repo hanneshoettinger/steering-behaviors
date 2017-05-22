@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets="fix8_dependencies_gtest_init">
+  <PropertyGroup Label="Debug and static and RuntimeLibraryNull" Condition="( $(Configuration.ToLower().IndexOf('debug')) &gt; -1 ) And '$(Linkage-fix8_dependencies_gtest.ToLower())' == 'static' And ('$(RuntimeLibrary)' == '')">
+    <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+  </PropertyGroup>
+  <PropertyGroup Label="Release and static and RuntimeLibraryNull" Condition="( $(Configuration.ToLower().IndexOf('debug')) == -1 ) And '$(Linkage-fix8_dependencies_gtest.ToLower())' == 'static' And ('$(RuntimeLibrary)' == '')">
+    <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+  </PropertyGroup>
+  <PropertyGroup Label="Default initializers for properties">
+    <Linkage-fix8_dependencies_gtest Condition="'$(Linkage-fix8_dependencies_gtest)' == ''">dynamic</Linkage-fix8_dependencies_gtest>
+    <CallingConvention-fix8_dependencies_gtest Condition="'$(CallingConvention-fix8_dependencies_gtest)' == ''">cdecl</CallingConvention-fix8_dependencies_gtest>
+  </PropertyGroup>
+  <ItemGroup>
+    <PropertyPageSchema Include="$(MSBuildThisFileDirectory)\default-propertiesui.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PropertyPageSchema Include="$(MSBuildThisFileDirectory)\fix8.dependencies.gtest-propertiesui-8ccd7ee7-f8d4-46d7-a54a-72782b8ea78b.xml" />
+  </ItemGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>HAS_GTEST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)../..//build/native/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)../..//build/native/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="static" Condition="'$(Linkage-fix8_dependencies_gtest.ToLower())' == 'static'">
+    <ClCompile>
+      <RuntimeLibrary>$(RuntimeLibrary)</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="x64 and v120 and Debug and Desktop" Condition="'$(Platform.ToLower())' == 'x64' And ( $(PlatformToolset.ToLower().IndexOf('v120')) &gt; -1 Or '$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0' Or '$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0' Or '$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0' ) And ( $(Configuration.ToLower().IndexOf('debug')) &gt; -1 ) And ( !('$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0') And !('$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0') And !('$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0') And !('$(TargetPlatformIdentifier.ToLower())' == 'windows phone' And '$(TargetPlatformVersion)' == '8.0') And !('$(AppContainerApplication.ToLower())' == 'true') )">
+    <Link>
+      <AdditionalDependencies>$(MSBuildThisFileDirectory)../..//build/native/lib/x64\v120\Debug\Desktop\gtest_main-mdd.lib;$(MSBuildThisFileDirectory)../..//build/native/lib/x64\v120\Debug\Desktop\gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="x64 and v120 and Release and Desktop" Condition="'$(Platform.ToLower())' == 'x64' And ( $(PlatformToolset.ToLower().IndexOf('v120')) &gt; -1 Or '$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0' Or '$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0' Or '$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0' ) And ( $(Configuration.ToLower().IndexOf('debug')) == -1 ) And ( !('$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0') And !('$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0') And !('$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0') And !('$(TargetPlatformIdentifier.ToLower())' == 'windows phone' And '$(TargetPlatformVersion)' == '8.0') And !('$(AppContainerApplication.ToLower())' == 'true') )">
+    <Link>
+      <AdditionalDependencies>$(MSBuildThisFileDirectory)../..//build/native/lib/x64\v120\Release\Desktop\gtest_main-md.lib;$(MSBuildThisFileDirectory)../..//build/native/lib/x64\v120\Release\Desktop\gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="Win32 and v120 and Debug and Desktop" Condition="'$(Platform.ToLower())' == 'win32' And ( $(PlatformToolset.ToLower().IndexOf('v120')) &gt; -1 Or '$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0' Or '$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0' Or '$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0' ) And ( $(Configuration.ToLower().IndexOf('debug')) &gt; -1 ) And ( !('$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0') And !('$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0') And !('$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0') And !('$(TargetPlatformIdentifier.ToLower())' == 'windows phone' And '$(TargetPlatformVersion)' == '8.0') And !('$(AppContainerApplication.ToLower())' == 'true') )">
+    <Link>
+      <AdditionalDependencies>$(MSBuildThisFileDirectory)../..//build/native/lib/Win32\v120\Debug\Desktop\gtest_main-mdd.lib;$(MSBuildThisFileDirectory)../..//build/native/lib/Win32\v120\Debug\Desktop\gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="Win32 and v120 and Release and Desktop" Condition="'$(Platform.ToLower())' == 'win32' And ( $(PlatformToolset.ToLower().IndexOf('v120')) &gt; -1 Or '$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0' Or '$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0' Or '$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0' ) And ( $(Configuration.ToLower().IndexOf('debug')) == -1 ) And ( !('$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0') And !('$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0') And !('$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0') And !('$(TargetPlatformIdentifier.ToLower())' == 'windows phone' And '$(TargetPlatformVersion)' == '8.0') And !('$(AppContainerApplication.ToLower())' == 'true') )">
+    <Link>
+      <AdditionalDependencies>$(MSBuildThisFileDirectory)../..//build/native/lib/Win32\v120\Release\Desktop\gtest_main-md.lib;$(MSBuildThisFileDirectory)../..//build/native/lib/Win32\v120\Release\Desktop\gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <UsingTask TaskName="fix8_dependencies_gtest_Contains" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" TaskFactory="CodeTaskFactory">
+    <ParameterGroup>
+      <Text Output="false" ParameterType="System.String" />
+      <Library Output="false" Required="true" ParameterType="System.String" />
+      <Value Output="false" Required="true" ParameterType="System.String" />
+      <Result Output="true" ParameterType="System.String" />
+    </ParameterGroup>
+    <Task>
+      <Code>Result = ((Text ?? "").Split(';').Contains(Library) ) ? Value : String.Empty;</Code>
+    </Task>
+  </UsingTask>
+  <Target Name="fix8_dependencies_gtest_init">
+    <fix8_dependencies_gtest_Contains Text="Linkage-dynamic" Library="fix8_dependencies_gtest" Value="dynamic" Condition="'$(Linkage-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="Linkage-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+    <fix8_dependencies_gtest_Contains Text="Linkage-static" Library="fix8_dependencies_gtest" Value="static" Condition="'$(Linkage-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="Linkage-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+    <fix8_dependencies_gtest_Contains Text="Linkage-ltcg" Library="fix8_dependencies_gtest" Value="ltcg" Condition="'$(Linkage-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="Linkage-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+    <fix8_dependencies_gtest_Contains Text="Linkage-sxs" Library="fix8_dependencies_gtest" Value="sxs" Condition="'$(Linkage-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="Linkage-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+    <fix8_dependencies_gtest_Contains Text="CallingConvention-cdecl" Library="fix8_dependencies_gtest" Value="cdecl" Condition="'$(CallingConvention-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="CallingConvention-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+    <fix8_dependencies_gtest_Contains Text="CallingConvention-stdcall" Library="fix8_dependencies_gtest" Value="stdcall" Condition="'$(CallingConvention-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="CallingConvention-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+    <fix8_dependencies_gtest_Contains Text="CallingConvention-fastcall" Library="fix8_dependencies_gtest" Value="fastcall" Condition="'$(CallingConvention-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="CallingConvention-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+    <fix8_dependencies_gtest_Contains Text="CallingConvention-thiscall" Library="fix8_dependencies_gtest" Value="thiscall" Condition="'$(CallingConvention-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="CallingConvention-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+    <fix8_dependencies_gtest_Contains Text="CallingConvention-clrcall" Library="fix8_dependencies_gtest" Value="clrcall" Condition="'$(CallingConvention-fix8_dependencies_gtest)'==''">
+      <Output TaskParameter="Result" PropertyName="CallingConvention-fix8_dependencies_gtest" />
+    </fix8_dependencies_gtest_Contains>
+  </Target>
+</Project>
